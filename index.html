@@ -1,21 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
-<style>
-</style>
-<script src=""></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Tiles – Shopify App by NAVERTICA</title>
+  <meta name="description" content="Display beautiful subcategory tiles on your Shopify collection pages. Fully customizable, mobile-ready, no code required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #008060 0%, #004c3f 100%);
+      color: white;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    header h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      font-size: 18px;
+      opacity: 0.88;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #008060;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* MAIN */
+    main { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid #e5e5ea;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .feature-card p { font-size: 14px; color: #6e6e73; }
+
+    /* SETUP GUIDE */
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: #6e6e73;
+      margin-bottom: 32px;
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
+    .step {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e5e5ea;
+      padding: 20px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .step-number {
+      background: linear-gradient(135deg, #008060, #004c3f);
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .step-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: #6e6e73; }
+    .step-body code {
+      background: #f5f5f7;
+      border: 1px solid #e5e5ea;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #d82c0d;
+    }
+
+    /* SUPPORT */
+    .support-box {
+      background: linear-gradient(135deg, #f0faf6, #e6f4ef);
+      border: 1px solid #b7e3d4;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .support-box h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #004c3f; }
+    .support-box p { font-size: 15px; color: #3a6b5e; margin-bottom: 20px; }
+    .support-link {
+      display: inline-block;
+      background: #008060;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 11px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .support-link:hover { background: #004c3f; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #8e8e93;
+      border-top: 1px solid #e5e5ea;
+    }
+    footer a { color: #008060; text-decoration: none; }
+  </style>
+</head>
 <body>
 
-<img src="img_la.jpg" alt="LA" style="width:100%">
+  <header>
+    <div class="badge">Shopify Theme App Extension</div>
+    <h1>Category Tiles</h1>
+    <p>Display beautiful, customizable subcategory tiles on your Shopify collection pages — no code required.</p>
+    <a class="cta-btn" href="https://apps.shopify.com/" target="_blank" rel="noopener">View on Shopify App Store</a>
+  </header>
 
-<div class="">
- <h1>This is a Heading</h1>
- <p>This is a paragraph.</p>
- <p>This is another paragraph.</p>
-</div>
+  <main>
+
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Fully Customizable</h3>
+        <p>Adjust card size, image ratio, colors, borders, and typography directly in the Theme Editor.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Ready</h3>
+        <p>Responsive design with separate display limits for desktop and mobile devices.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Multi-language</h3>
+        <p>Full localization support: English, Czech, Slovak, German, and Polish out of the box.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Performance First</h3>
+        <p>Lazy-loaded images, optimized via Shopify CDN, and zero impact on theme code.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Setup Guide</h2>
+    <p class="section-sub">Get started in under 5 minutes — no coding required.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <h4>Create a Metafield definition</h4>
+          <p>In your Shopify Admin go to <strong>Settings → Custom data → Collections</strong> and click <em>Add definition</em>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-body">
+          <h4>Name it exactly "Subcollections"</h4>
+          <p>The name must be <code>Subcollections</code> exactly (case-sensitive).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-body">
+          <h4>Set type to Collection – List of values</h4>
+          <p>Click <em>Select type</em>, choose <strong>Collection</strong>, and select <strong>List of values</strong> (not "One value").</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-body">
+          <h4>Enable Storefront API access</h4>
+          <p>In the <em>Access</em> section, make sure <strong>Storefront API access</strong> is checked before saving.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-body">
+          <h4>Add subcollections to your collections</h4>
+          <p>Open a collection, scroll to the Metafields section, and select one or more subcollections.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-body">
+          <h4>Add the app block in Theme Editor</h4>
+          <p>Go to <strong>Online Store → Themes → Customize</strong>, navigate to a collection page, and add the <em>Category Tiles</em> block.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-box">
+      <h3>Need help?</h3>
+      <p>If you run into any issues or have questions, our support team is happy to help.</p>
+      <a class="support-link" href="mailto:support@navertica.com">Contact Support</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 <a href="https://www.navertica.com" target="_blank" rel="noopener">NAVERTICA a.s.</a> · Category Tiles for Shopify</p>
+  </footer>
 
 </body>
 </html>
+
