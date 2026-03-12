@@ -1,7 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" /><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Tiles – Shopify App by NAVERTICA</title>
+  <meta name="description" content="Display beautiful subcategory tiles on your Shopify collection pages. Fully customizable, mobile-ready, no code required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #FE6804 0%, #6A5E4F 100%);
+      color: white;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    header h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      font-size: 18px;
+      opacity: 0.88;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #FE6804;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* MAIN */
+    main { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid #e5e5ea;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .feature-card p { font-size: 14px; color: #6e6e73; }
+
+    /* SETUP GUIDE */
+    .section-header { text-align: center; margin-bottom: 40px; }
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: #6e6e73;
+      margin-bottom: 32px;
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
+    .step {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid #e5e5ea;
+      padding: 20px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .step-number {
+      background: linear-gradient(135deg, #FE6804, #6A5E4F);
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .step-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: #6e6e73; }
+    .step-body code {
+      background: #f5f5f7;
+      border: 1px solid #e5e5ea;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #d82c0d;
+    }
+
+    /* DROPDOWN STEPS */
+    .step.is-dropdown {
+      display: block;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .step.is-dropdown:hover {
+      background: #fafafc;
+      border-color: #d1d1d6;
+    }
+    .step-header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      width: 100%;
+    }
+    .step-toggle {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      color: #6e6e73;
+      transition: transform 0.3s ease, color 0.2s ease;
+    }
+    .step.is-dropdown:hover .step-toggle {
+      color: #1d1d1f;
+    }
+    .step.expanded .step-toggle {
+      transform: rotate(180deg);
+    }
+    .step-dropdown-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .step.expanded .step-dropdown-content {
+      grid-template-rows: 1fr;
+    }
+    .step-dropdown-inner {
+      overflow: hidden;
+    }
+    .step-dropdown-inner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #e5e5ea;
+      margin-top: 20px;
+      display: block;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    /* SUPPORT */
+    .support-box {
+      background: linear-gradient(135deg, #fdf3ec, #f5ebe0);
+      border: 1px solid #f0c9a0;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .support-box h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; color: #6A5E4F; }
+    .support-box p { font-size: 15px; color: #8a7a6e; margin-bottom: 20px; }
+    .support-link {
+      display: inline-block;
+      background: #FE6804;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 11px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .support-link:hover { background: #6A5E4F; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #8e8e93;
+      border-top: 1px solid #e5e5ea;
+    }
+    footer a { color: #2864A2; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Shopify Theme App Extension</div>
+    <h1>Category Tiles</h1>
+    <p>Display beautiful, customizable subcategory tiles on your Shopify collection pages — no code required.</p>
+  </header>
+
+  <main>
+    <div class="section-header">
+      <h2 class="section-title">Setup Guide</h2>
+      <p class="section-sub">Get started in under 5 minutes — no coding required.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-body">
+          <h4>Create a Metafield definition</h4>
+          <p>In your Shopify Admin go to <strong>Settings → Metafields and metaobjects → Collections</strong> and click <em>Add definition</em>.</p>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">2</div>
+          <div class="step-body">
+            <h4>Name your new definition exactly "Subcollections"</h4>
+            <p>The name must be <code>Subcollections</code> exactly (case-sensitive).</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="NewDefinitionName.png" alt="Subcollections Metafield Definition Name">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">3</div>
+          <div class="step-body">
+            <h4>Set type to Collection – List of values</h4>
+            <p>Click on the field <em>Type</em>, choose <strong>Collection</strong>, on the left side of the field click on the dropdown and select <strong>List of values</strong> (not "One").</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="NewDefinitionType.png" alt="Set type to Collection – List of values">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">4</div>
+          <div class="step-body">
+            <h4>Enable Storefront API access</h4>
+            <p>In the <em>Option</em> section, make sure <strong>Storefront API access</strong> is checked before saving.</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="NewDefinitionOptions.png" alt="Enable Storefront API access">
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-body">
+          <h4>Create your parent collection</h4>
+          <p>In the Shopify Admin, click on the field <strong>Products → Collections</strong>, then create your parent collection (e.g. <em>Snowboards</em>).</p>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">6</div>
+          <div class="step-body">
+            <h4>Create your child collections</h4>
+            <p>Stay in the Collection tab and create your child collections (e.g. <em>Freeride</em>, <em>Freestyle</em>, <em>Light</em>).</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="NewCollections.png" alt="Create your child collections">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">7</div>
+          <div class="step-body">
+            <h4>Add your child Collections to your parent Collection</h4>
+            <p>Navigate to your parent Collection (e.g. <em>Snowboards</em>), scroll down to our new metafield <strong>Subcollections</strong> and select the child Collections you want to display as tiles. (e.g. <em>Freeride</em>, <em>Freestyle</em>, <em>Light</em>).</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="AddSubCollectionsToCollection.png" alt="Add your child Collections to your parent Collection">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">8</div>
+          <div class="step-body">
+            <h4>Add the app block to your theme</h4>
+            <p>Navigate to <strong>Online Store → Themes → Edit theme</strong>. Select the page where you want to display your Category tiles. Then click <strong>Add section/Add block</strong>.</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="AddAppToTheme.png" alt="Add the app block to your theme">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">9</div>
+          <div class="step-body">
+            <h4>Customize the design to suit your needs</h4>
+            <p>On the right side of Theme editor customize your Category tiles.</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="CustomizeTiles.png" alt="Customize the design to suit your needs">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Fully Customizable</h3>
+          <p>Adjust card size, image ratio, colors, borders, and typography directly in the Theme Editor.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Ready</h3>
+          <p>Responsive design with separate display limits for desktop and mobile devices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Multi-language</h3>
+          <p>Full localization support: English, Czech, Slovak, German, and Polish out of the box.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Performance First</h3>
+          <p>Lazy-loaded images, optimized via Shopify CDN, and zero impact on theme code.</p>
+        </div>
+      </div>
+      
+      <div class="support-box">
+        <h3>Need help?</h3>
+        <p>If you run into any issues or have questions, our support team is happy to help.</p>
+        <a class="support-link" href="mailto:support@navertica.com">Contact Support</a>
+      </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 <a href="https://www.navertica.com" target="_blank" rel="noopener">NAVERTICA a.s.</a> · Category Tiles for Shopify</p>
+  </footer>
+
+</body>
+</html>
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Category Tiles – Shopify App by NAVERTICA</title>
   <meta name="description" content="Display beautiful subcategory tiles on your Shopify collection pages. Fully customizable, mobile-ready, no code required." />
