@@ -235,19 +235,12 @@
     </div>
 
     <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-body">
-          <h4>Create a Metafield definition</h4>
-          <p>In your Shopify Admin go to <strong>Settings → Metafields and metaobjects → Collections</strong> and click <em>Add definition</em>.</p>
-        </div>
-      </div>
       <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
         <div class="step-header">
-          <div class="step-number">2</div>
+          <div class="step-number">1</div>
           <div class="step-body">
-            <h4>Name your new definition exactly "Subcollections"</h4>
-            <p>The name must be <code>Subcollections</code> exactly (case-sensitive).</p>
+            <h4>Automatic creation of metafield</h4>
+            <p>Immediately after installing the application, the <strong>Subcollections</strong> metafield is automatically created.</p>
           </div>
           <div class="step-toggle">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -255,46 +248,12 @@
         </div>
         <div class="step-dropdown-content">
           <div class="step-dropdown-inner">
-            <img src="NewDefinitionName.png" alt="Subcollections Metafield Definition Name">
-          </div>
-        </div>
-      </div>
-      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
-        <div class="step-header">
-          <div class="step-number">3</div>
-          <div class="step-body">
-            <h4>Set type to Collection – List of values</h4>
-            <p>Click on the field <em>Type</em>, choose <strong>Collection</strong>, on the left side of the field click on the dropdown and select <strong>List of values</strong> (not "One").</p>
-          </div>
-          <div class="step-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-        </div>
-        <div class="step-dropdown-content">
-          <div class="step-dropdown-inner">
-            <img src="NewDefinitionType.png" alt="Set type to Collection – List of values">
-          </div>
-        </div>
-      </div>
-      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
-        <div class="step-header">
-          <div class="step-number">4</div>
-          <div class="step-body">
-            <h4>Enable Storefront API access</h4>
-            <p>In the <em>Option</em> section, make sure <strong>Storefront API access</strong> is checked before saving.</p>
-          </div>
-          <div class="step-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-        </div>
-        <div class="step-dropdown-content">
-          <div class="step-dropdown-inner">
-            <img src="NewDefinitionOptions.png" alt="Enable Storefront API access">
+            <img src="AutomaticMetafieldCreation.png" alt="Automatic creation of metafield">
           </div>
         </div>
       </div>
       <div class="step">
-        <div class="step-number">5</div>
+        <div class="step-number">2</div>
         <div class="step-body">
           <h4>Create your parent collection</h4>
           <p>In the Shopify Admin, click on the field <strong>Products → Collections</strong>, then create your parent collection (e.g. <em>Snowboards</em>).</p>
@@ -302,7 +261,7 @@
       </div>
       <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
         <div class="step-header">
-          <div class="step-number">6</div>
+          <div class="step-number">3</div>
           <div class="step-body">
             <h4>Create your child collections</h4>
             <p>Stay in the Collection tab and create your child collections (e.g. <em>Freeride</em>, <em>Freestyle</em>, <em>Light</em>).</p>
@@ -319,10 +278,10 @@
       </div>
       <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
         <div class="step-header">
-          <div class="step-number">7</div>
+          <div class="step-number">4</div>
           <div class="step-body">
-            <h4>Add your child Collections to your parent Collection</h4>
-            <p>Navigate to your parent Collection (e.g. <em>Snowboards</em>), scroll down to our new metafield <strong>Subcollections</strong> and select the child Collections you want to display as tiles. (e.g. <em>Freeride</em>, <em>Freestyle</em>, <em>Light</em>).</p>
+            <h4>Navigate to the Metafields section in your Parent Collection</h4>
+            <p>Navigate to your parent Collection (e.g. <em>Snowboards</em>), scroll down to the <strong>Metafields</strong> section and click on <strong>View all</strong>. (e.g. <em>Freeride</em>, <em>Freestyle</em>, <em>Light</em>).</p>
           </div>
           <div class="step-toggle">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
@@ -330,13 +289,30 @@
         </div>
         <div class="step-dropdown-content">
           <div class="step-dropdown-inner">
-            <img src="AddSubCollectionsToCollection.png" alt="Add your child Collections to your parent Collection">
+            <img src="MetafieldSection.png" alt="Navigate to the Metafields section in your Parent Collection">
           </div>
         </div>
       </div>
       <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
         <div class="step-header">
-          <div class="step-number">8</div>
+          <div class="step-number">5</div>
+          <div class="step-body">
+            <h4>Add your child Collections to your parent Collection</h4>
+            <p>Once you are on the Metafields page, click on the <strong>Subcollections</strong> metafield and select the Child Collections you want to add (e.g. <em>Freestyle</em>, <em>Light</em>, <em>Freeride</em>).</p>
+          </div>
+          <div class="step-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="step-dropdown-content">
+          <div class="step-dropdown-inner">
+            <img src="AddSubcollections.png" alt="Add your child Collections to your parent Collection">
+          </div>
+        </div>
+      </div>
+      <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
+        <div class="step-header">
+          <div class="step-number">5</div>
           <div class="step-body">
             <h4>Add the app block to your theme</h4>
             <p>Navigate to <strong>Online Store → Themes → Edit theme</strong>. Select the page where you want to display your Category tiles. Then click <strong>Add section/Add block</strong>.</p>
@@ -353,7 +329,7 @@
       </div>
       <div class="step is-dropdown" onclick="this.classList.toggle('expanded')">
         <div class="step-header">
-          <div class="step-number">9</div>
+          <div class="step-number">6</div>
           <div class="step-body">
             <h4>Customize the design to suit your needs</h4>
             <p>On the right side of Theme editor customize your Category tiles.</p>
